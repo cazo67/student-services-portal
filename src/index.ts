@@ -1,16 +1,31 @@
+type StudentStatus = "active" | "inactive";
+
 interface Student {
   id: number;
   name: string;
   email: string;
-  status: "active" | "inactive";
+  status: StudentStatus;
 }
 
 // function formatStudent(student: Student): string {
 //     return `Student ID: ${student.id}, Name: ${student.name}, Email: ${student.email}, Status: ${student.status}`;
 // }
 
+function getStudentStatusLabel(status: unknown): string {
+  if (status === "active") {
+    return "Active Student";
+  }
+
+  if (status === "inactive") {
+    return "Inactive Student";
+  }
+
+  return "Unknown Status";
+}
+
 function formatStudent(student: Student): string {
-  return `${student.id} - ${student.name} (${student.email}) is currently ${student.status}.`;
+  const statusLabel = getStudentStatusLabel(student.status);
+  return `${student.id} - ${student.name} (${student.email}) is currently ${statusLabel}.`;
 }
 
 const student1: Student = {
@@ -21,6 +36,9 @@ const student1: Student = {
 };
 
 console.log(formatStudent(student1));
+console.log(getStudentStatusLabel("active"));
+console.log(getStudentStatusLabel("inactive"));
+console.log(getStudentStatusLabel("pending"));
 
 interface ApiResponse<T> {
   success: boolean;

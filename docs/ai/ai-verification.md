@@ -1,5 +1,7 @@
 # AI Recommendation Verification
 
+[Back to project README](../../README.md)
+
 ## Claim or Code Verified
 
 The union type `"active" | "inactive"` limits the expected status values. The `unknown` type safely accepts unexpected input but requires checking before using it.
